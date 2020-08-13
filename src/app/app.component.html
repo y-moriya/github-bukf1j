@@ -20,8 +20,16 @@
 </form>
 <h4>Weapon</h4>
 <form name="weapons-form">
+  <p>
+    WeaponType: 
+    <select [(ngModel)]="this.selectedWeaponType" (change)="onChange()" name="weapon-type-select">
+      <option *ngFor="let type of this.weaponTypes" [ngValue]="type">
+        {{ type }}
+      </option>
+    </select>
+  </p>
   <select [(ngModel)]="this.selectedWeapon" name="weapon-select">
-    <option *ngFor="let weapon of this.weapons" [ngValue]="weapon">
+    <option *ngFor="let weapon of this.filterdWeapons" [ngValue]="weapon">
       {{ weapon | weaponName }}
     </option>
   </select>

@@ -16,9 +16,12 @@ import { Weapon } from './model/weapon';
 export class AppComponent  {
   public monsters: Character[] = [];
   public players: Character[] = [];
+  public weaponTypes: string[] = ["ALL"];
   public weapons: Weapon[] = [];
   public player: Character;
+  public selectedWeaponType: WeaponType;
   public selectedWeapon: Weapon;
+  public filterdWeapons: Weapon[] = [];
   public selectedMonster: Character;
   public result: IResult;
 
@@ -43,13 +46,19 @@ export class AppComponent  {
 
   getWeapons() {
     this.weaponService.getWeapons()
-      .subscribe(weapons => this.weapons = weapons.filter((weapon) => { return weapon.zodiac }));
+      .subscribe(
+        weapons => { this.weapons = weapons.filter((weapon) => { return weapon.zodiac });
+        this.filterdWeapons = this.weapons;
+      });
   }
 
   ngOnInit() {
     this.getPlayers();
     this.getMonsters();
     this.getWeapons();
+    for (let t in WeaponType) {
+      this.weaponTypes.push(t);
+    }
     this.result = {min: 0, max: 0};
   }
 
@@ -58,6 +67,17 @@ export class AppComponent  {
     this.calculateService.attacker = this.player;
     this.calculateService.defender = this.selectedMonster;
     this.calculate();
+  }
+
+  onChange() {
+    if (this.selectedWeaponType.toString() === "ALL") {
+      this.filterdWeapons = this.weapons;
+    }
+    else {
+      this.filterdWeapons = this.weapons.filter(
+        weapon => { return weapon.weaponType === this.selectedWeaponType}
+        );
+    }
   }
 
   public calculate(): void {
