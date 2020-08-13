@@ -75,12 +75,12 @@ export class AppComponent  {
     }
     else {
       this.filterdWeapons = this.weapons.filter(
-        weapon => { return weapon.weaponType === this.selectedWeaponType}
+          weapon => { return weapon.weaponType === this.selectedWeaponType}
         );
     }
   }
 
-  public calculate(): void {
+  calculate(): void {
     if (this.selectedWeapon === undefined || this.selectedMonster === undefined) {
       this.result = {min: 0, max: 0};
       return;
