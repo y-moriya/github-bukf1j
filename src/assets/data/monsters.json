@@ -26,5 +26,19 @@
       "speed":17,
       "evade":4
     }
+  },
+  {
+    "name": "Fran",
+    "status": {
+      "level": 99,
+      "strength": 80, 
+      "attackPower":12, 
+      "defense":5,
+      "magickPower":82,
+      "magickResist":5,
+      "vitality":62,
+      "speed":36,
+      "evade":0
+    }
   }
 ]

@@ -46,17 +46,15 @@ export class CalculateService {
   }
 
   private calcStr(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const min = (atk - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
-    const max = (atk * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const min = (this.attacker.weapon.attack - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
     return {min: min, max: max};
   }
 
   private calcMag(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
     const matk = this.getMagAtk(this.attacker.status.magickPower, this.attacker.weapon.magickPower);
-    const min = (atk - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
-    const max = (atk * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
+    const min = (this.attacker.weapon.attack - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
     return {min: min, max: max};
   }
 
@@ -67,38 +65,33 @@ export class CalculateService {
   }
 
   private calcSpd(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const min = (atk - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.speed) / 218);
-    const max = (atk * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.speed) / 218);
+    const min = (this.attacker.weapon.attack - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.speed) / 218);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.speed) / 218);
     return {min: min, max: max};
   }
 
   private calcPierce(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const min = atk ** 2;
-    const max = (atk * 1.125) ** 2;
+    const min = this.attacker.weapon.attack ** 2;
+    const max = (this.attacker.weapon.attack * 1.125) ** 2;
     return {min: min, max: max};
   }
 
   private calcMace(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
     const matk = this.getMagAtk(this.attacker.status.magickPower, this.attacker.weapon.magickPower);
-    const min = (atk - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
-    const max = (atk * 1.125 - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
+    const min = (this.attacker.weapon.attack - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
     return {min: min, max: max};
   }
 
   private calcPole(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const min = (atk - this.defender.status.magickResist) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
-    const max = (atk * 1.125 - this.defender.status.magickResist) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const min = (this.attacker.weapon.attack - this.defender.status.magickResist) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.magickResist) * (1 + this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
     return {min: min, max: max};
   }
 
   private calcUnarmed(): IResult {
-    const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const min = (atk - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
-    const max = (atk * 1.125 - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const min = (this.attacker.weapon.attack - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
+    const max = (this.attacker.weapon.attack * 1.125 - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
     return {min: min, max: max};
   }
 
