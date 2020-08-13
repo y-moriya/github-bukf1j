@@ -1,0 +1,10 @@
+<h2>Attacker</h2>
+<p>{{ this.players[0].name }}</p>
+<h2>Defenders</h2>
+<div *ngFor="let monster of this.monsters">
+  <h3>
+    {{ monster.name }}
+  </h3>
+  <h4>Damage</h4>
+  <app-result [result]="this.calculate(this.players[0], monster)"></app-result>
+</div>

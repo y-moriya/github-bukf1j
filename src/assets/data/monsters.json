@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Rogue Tomato",
+    "status": {
+      "level": 2,
+      "strength":9, 
+      "attackPower":10, 
+      "defense":7,
+      "magickPower":3,
+      "magickResist":18,
+      "vitality":14,
+      "speed":12,
+      "evade":0
+    }
+  },
+  {
+    "name": "Alraune",
+    "status": {
+      "level": 10,
+      "strength":14, 
+      "attackPower":21, 
+      "defense":8,
+      "magickPower":17,
+      "magickResist":11,
+      "vitality":31,
+      "speed":17,
+      "evade":4
+    }
+  }
+]

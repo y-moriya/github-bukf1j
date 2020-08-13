@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Vaan",
+    "status": {
+      "level": 1,
+      "strength":23, 
+      "attackPower":0, 
+      "defense":0,
+      "magickPower":22,
+      "magickResist":0,
+      "vitality":24,
+      "speed":24,
+      "evade":0
+    }
+  }
+]
