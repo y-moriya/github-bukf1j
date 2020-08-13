@@ -9,7 +9,7 @@ export class Weapon {
   weaponType: WeaponType;
   formula: Formula;
   attack: number;
-  magickPower: number;
+  magickPower?: number;
   vitality: number;
   speed: number;
   ct: number;

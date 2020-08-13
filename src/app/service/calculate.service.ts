@@ -54,7 +54,7 @@ export class CalculateService {
 
   private calcMag(): IResult {
     const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const matk = this.attacker.status.magickPower + this.attacker.weapon.magickPower;
+    const matk = this.getMagAtk(this.attacker.status.magickPower, this.attacker.weapon.magickPower);
     const min = (atk - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
     const max = (atk * 1.125 - this.defender.status.defense) * (1 + this.attacker.status.strength * (this.attacker.status.level + matk) / 256);
     return {min: min, max: max};
@@ -82,7 +82,7 @@ export class CalculateService {
 
   private calcMace(): IResult {
     const atk = this.attacker.status.strength + this.attacker.weapon.attack;
-    const matk = this.attacker.status.magickPower + this.attacker.weapon.magickPower;
+    const matk = this.getMagAtk(this.attacker.status.magickPower, this.attacker.weapon.magickPower);
     const min = (atk - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
     const max = (atk * 1.125 - this.defender.status.defense) * (1 + matk * (this.attacker.status.level + matk) / 256);
     return {min: min, max: max};
@@ -100,5 +100,13 @@ export class CalculateService {
     const min = (atk - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
     const max = (atk * 1.125 - this.defender.status.defense) * (this.attacker.status.strength * (this.attacker.status.level + this.attacker.status.strength) / 256);
     return {min: min, max: max};
+  }
+
+  private getMagAtk(charsMag: number, weaponMag?: number): number {
+    let result = charsMag;
+    if (weaponMag !== undefined) {
+      result += weaponMag;
+    }
+    return result;
   }
 }

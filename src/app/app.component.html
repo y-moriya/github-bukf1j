@@ -1,11 +1,27 @@
 <h2>Attacker</h2>
 <p>{{ this.players[0].name }}</p>
-<h2>Defenders</h2>
-<div *ngFor="let monster of this.monsters">
-  <h3>
-    {{ monster.name }}
-  </h3>
-  <h4>Damage</h4>
-  <button (click)="onClick()">Btn</button>
-  <app-result [result]="this.result"></app-result>
+<h3>Weapon</h3>
+<form name="weapons-form">
+  <select [(ngModel)]="this.selectedWeapon" name="weapon-select">
+    <option *ngFor="let weapon of this.weapons" [ngValue]="weapon">
+      {{ weapon | weaponName }}
+    </option>
+  </select>
+</form> 
+<div *ngIf="this.selectedWeapon !== undefined">
+  <p>selelcted: {{ this.selectedWeapon | weaponName }},
+     Formula: {{ this.selectedWeapon.formula }}</p>
 </div>
+  
+<h2>Defenders</h2>
+<form name="defenders-form">
+  <select [(ngModel)]="this.selectedMonster" name="defender-select">
+    <option *ngFor="let monster of this.monsters" [ngValue]="monster">
+      {{ monster.name }}
+    </option>
+  </select>
+</form>
+
+<h4>Damage</h4>
+<button (click)="onClick()">Btn</button>
+<app-result [result]="this.result"></app-result>

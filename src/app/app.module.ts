@@ -8,10 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CalculateService } from './service/calculate.service';
 import { ResultComponent } from './result/result.component';
 import { WeaponService } from './service/weapon.service';
+import { WeaponNamePipe } from './weapon-name.pipe';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule ],
-  declarations: [ AppComponent, ResultComponent ],
+  declarations: [ AppComponent, ResultComponent, WeaponNamePipe ],
   bootstrap:    [ AppComponent ],
   providers: [CharacterService, CalculateService, WeaponService]
 })

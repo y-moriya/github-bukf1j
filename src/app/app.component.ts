@@ -17,8 +17,8 @@ export class AppComponent  {
   public monsters: Character[] = [];
   public players: Character[] = [];
   public weapons: Weapon[] = [];
-  public attacker: Character;
-  public defender: Character;
+  public selectedWeapon: Weapon;
+  public selectedMonster: Character;
   public result: IResult;
 
   constructor (
@@ -39,7 +39,7 @@ export class AppComponent  {
 
   getWeapons() {
     this.weaponService.getWeapons()
-      .subscribe(weapons => this.weapons = weapons);
+      .subscribe(weapons => this.weapons = weapons.filter((weapon) => { return weapon.zodiac }));
   }
 
   ngOnInit() {
@@ -50,21 +50,17 @@ export class AppComponent  {
   }
 
   onClick() {
-    this.players[0].weapon = this.weapons[0];
-    this.attacker = this.players[0];
-    this.defender = this.monsters[0];
+    this.players[0].weapon = this.selectedWeapon;
     this.calculateService.attacker = this.players[0];
-    this.calculateService.defender = this.monsters[0];
+    this.calculateService.defender = this.selectedMonster;
     this.calculate();
   }
 
   public calculate(): void {
-    if (this.attacker === undefined || this.defender === undefined) {
+    if (this.selectedWeapon === undefined || this.selectedMonster === undefined) {
       this.result = {min: 0, max: 0};
       return;
     }
-    console.log("obj", this.attacker.weapon);
     this.result = this.calculateService.calculate();
-    console.log("after calc");
   }
 }
