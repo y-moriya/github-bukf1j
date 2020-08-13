@@ -1,10 +1,10 @@
 export enum Formula {
-  Strength,
-  MagickPower,
-  Vitality,
-  Speed,
-  Pierce,
-  Mace,
-  Pole,
-  Unarmed
+  Strength = "Strength",
+  MagickPower = "MagickPower",
+  Vitality = "Vitality",
+  Speed = "Speed",
+  Pierce = "Pierce",
+  Mace = "Mace",
+  Pole = "Pole",
+  Unarmed = "Unarmed"
 }
