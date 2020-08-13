@@ -1,6 +1,24 @@
 <h2>Attacker</h2>
-<p>{{ this.players[0].name }}</p>
-<h3>Weapon</h3>
+<h3>Player</h3>
+<p>{{ this.player.name}}</p>
+<h4>Status</h4>
+<form name="status-form">
+  <label for="level">レベル: </label>
+  <input name="level" type="number" [(ngModel)]="this.player.status.level">
+  <br>
+  <label for="strength">ちから: </label>
+  <input name="strength" type="number" [(ngModel)]="this.player.status.strength">
+  <br>
+  <label for="magickPower">魔力: </label>
+  <input name="magickPower" type="number" [(ngModel)]="this.player.status.magickPower">
+  <br>
+  <label for="vitality">活力: </label>
+  <input name="vitality" type="number" [(ngModel)]="this.player.status.vitality">
+  <br>
+  <label for="speed">速さ: </label>
+  <input name="speed" type="number" [(ngModel)]="this.player.status.speed">
+</form>
+<h4>Weapon</h4>
 <form name="weapons-form">
   <select [(ngModel)]="this.selectedWeapon" name="weapon-select">
     <option *ngFor="let weapon of this.weapons" [ngValue]="weapon">
@@ -22,6 +40,6 @@
   </select>
 </form>
 
-<h4>Damage</h4>
+<h2>Damage</h2>
 <button (click)="onClick()">Calculate</button>
 <app-result [result]="this.result"></app-result>

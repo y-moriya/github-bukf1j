@@ -17,6 +17,7 @@ export class AppComponent  {
   public monsters: Character[] = [];
   public players: Character[] = [];
   public weapons: Weapon[] = [];
+  public player: Character;
   public selectedWeapon: Weapon;
   public selectedMonster: Character;
   public result: IResult;
@@ -34,7 +35,10 @@ export class AppComponent  {
 
   getPlayers() {
     this.characterService.getPlayers()
-      .subscribe(players => this.players = players);
+      .subscribe(
+        players => { this.players = players;
+        this.player = this.players[0];
+      });
   }
 
   getWeapons() {
@@ -50,8 +54,8 @@ export class AppComponent  {
   }
 
   onClick() {
-    this.players[0].weapon = this.selectedWeapon;
-    this.calculateService.attacker = this.players[0];
+    this.player.weapon = this.selectedWeapon;
+    this.calculateService.attacker = this.player;
     this.calculateService.defender = this.selectedMonster;
     this.calculate();
   }
