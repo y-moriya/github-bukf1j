@@ -13,8 +13,8 @@
      Formula: {{ this.selectedWeapon.formula }}</p>
 </div>
   
-<h2>Defenders</h2>
-<form name="defenders-form">
+<h2>Defender</h2>
+<form name="defender-form">
   <select [(ngModel)]="this.selectedMonster" name="defender-select">
     <option *ngFor="let monster of this.monsters" [ngValue]="monster">
       {{ monster.name }}
@@ -23,5 +23,5 @@
 </form>
 
 <h4>Damage</h4>
-<button (click)="onClick()">Btn</button>
+<button (click)="onClick()">Calculate</button>
 <app-result [result]="this.result"></app-result>
